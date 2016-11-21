@@ -6,13 +6,15 @@ using System.Threading.Tasks;
 
 namespace EmployeeManagement.Core.Models
 {
-    public class Employee
+    public abstract class Employee
     {
         private string _jobTitle;
 
+        public abstract int VacationHoursPerMonth { get; protected set; }
+
         public string Firstname { get; set; }
 
-        public int Id { get; private set; }
+        public int Id { get; set; }
 
         public string Lastname { get; set; }
 
@@ -34,7 +36,7 @@ namespace EmployeeManagement.Core.Models
 
         public void TakeVacation(int hours)
         {
-
+            //
         }
     }
 }
