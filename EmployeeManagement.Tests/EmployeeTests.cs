@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using EmployeeManagement.Core.Models;
 using static EmployeeManagement.Tests.Constants;
+using EmployeeManagement.Core.Exceptions;
 
 namespace EmployeeManagement.Tests
 {
@@ -55,15 +57,46 @@ namespace EmployeeManagement.Tests
         }
 
         [TestMethod, TestCategory(UnitTest)]
-        public void Should_Not_Allow_Vacation_When_None_Is_Available()
+        public void Should_Allow_Vacation_When_Available()
         {
             var engineer = new Engineer();
+            var date = DateTime.Now.AddMonths(1);
 
             engineer.Id = 1;
             engineer.JobTitle = JobTitle.ProgrammerI;
             engineer.Firstname = "Taylor";
 
-            engineer.TakeVacation(8, DateTime.Now.AddMonths(1));
+            engineer.TakeVacation(8, date);
+
+            Assert.AreEqual(1, engineer.TimeOffs.Count);
+            Assert.AreEqual(8, engineer.TimeOffs.First().HoursTaken);
+            Assert.AreEqual(date.Date, engineer.TimeOffs.First().Date);
+        }
+
+        [TestMethod, TestCategory(UnitTest)]
+        [ExpectedException(typeof(TimeOffException))]
+        public void Should_Not_Allow_Vacation_When_Not_Available()
+        {
+            var engineer = new Engineer();
+            var date = DateTime.Now.AddMonths(1);
+
+            engineer.Id = 1;
+            engineer.JobTitle = JobTitle.ProgrammerI;
+            engineer.Firstname = "Taylor";
+
+            engineer.TimeOffs.AddRange(new TimeOff[] {
+                new TimeOff(DateTime.Now.AddMonths(-9), 20),
+                new TimeOff(DateTime.Now.AddMonths(-7), 20),
+                new TimeOff(DateTime.Now.AddMonths(-5), 20),
+                new TimeOff(DateTime.Now.AddMonths(-3), 20),
+                new TimeOff(DateTime.Now.AddMonths(-1), 20)
+            });
+
+            engineer.TakeVacation(10, date);
+
+            //Assert.AreEqual(1, engineer.TimeOffs.Count);
+            //Assert.AreEqual(8, engineer.TimeOffs.First().HoursTaken);
+            //Assert.AreEqual(date.Date, engineer.TimeOffs.First().Date);
         }
     }
 }
