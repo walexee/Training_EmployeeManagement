@@ -9,6 +9,8 @@ namespace EmployeeManagement.Core.Repositories
 
         List<EmployeeEntity> GetAllEmployees();
 
-        void Save(EmployeeEntity employeeEntity);
+        void Create(EmployeeEntity employeeEntity);
+
+        void Update(EmployeeEntity employeeEntity);
     }
 }

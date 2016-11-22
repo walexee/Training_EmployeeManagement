@@ -1,25 +1,26 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using EmployeeManagement.Core.Models;
+using static EmployeeManagement.Tests.Constants;
 
 namespace EmployeeManagement.Tests
 {
     [TestClass]
     public class EmployeeTests
     {
-        [TestMethod]
+        [TestMethod, TestCategory(UnitTest)]
         public void Should_Be_Able_To_Create_Engineer_Instance()
         {
             var engineer = new Engineer();
         }
 
-        [TestMethod]
+        [TestMethod, TestCategory(UnitTest)]
         public void Should_Be_Able_To_Create_Accountant_Instance()
         {
             var account = new Accountant();
         }
 
-        [TestMethod]
+        [TestMethod, TestCategory(UnitTest)]
         public void Should_Return_10_As_VacationHourPerMonth_For_Engineers()
         {
             var engineer = new Engineer();
@@ -27,7 +28,7 @@ namespace EmployeeManagement.Tests
             Assert.AreEqual(10, engineer.VacationHoursPerMonth);
         }
 
-        [TestMethod]
+        [TestMethod, TestCategory(UnitTest)]
         public void Should_Return_8_As_VacationHourPerMonth_For_Accountants()
         {
             var accountant = new Accountant();
