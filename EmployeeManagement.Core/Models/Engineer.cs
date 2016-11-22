@@ -19,8 +19,8 @@ namespace EmployeeManagement.Core.Models
             set
             {
                 var jobTitleCode = (int)value;
-                var minJobCodeRange = 4000; //TODO: move into config
-                var maxJobCodeRange = 5000; //TODO: move into config
+                var minJobCodeRange = 3000; //TODO: move into config
+                var maxJobCodeRange = 4000; //TODO: move into config
 
                 if (jobTitleCode < minJobCodeRange || jobTitleCode >= maxJobCodeRange)
                     throw new InvalidOperationException("Invalid Job title");

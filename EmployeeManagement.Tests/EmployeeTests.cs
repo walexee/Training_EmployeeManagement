@@ -35,5 +35,35 @@ namespace EmployeeManagement.Tests
 
             Assert.AreEqual(8, accountant.VacationHoursPerMonth);
         }
+
+        [TestMethod, TestCategory(UnitTest)]
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void Accountant_Should_Not_Accept_Invalid_JobTitles()
+        {
+            var accountant = new Accountant();
+
+            accountant.JobTitle = JobTitle.ProgrammerI;
+        }
+
+        [TestMethod, TestCategory(UnitTest)]
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void Engineer_Should_Not_Accept_Invalid_JobTitles()
+        {
+            var engineer = new Engineer();
+
+            engineer.JobTitle = JobTitle.SeniorCpa;
+        }
+
+        [TestMethod, TestCategory(UnitTest)]
+        public void Should_Not_Allow_Vacation_When_None_Is_Available()
+        {
+            var engineer = new Engineer();
+
+            engineer.Id = 1;
+            engineer.JobTitle = JobTitle.ProgrammerI;
+            engineer.Firstname = "Taylor";
+
+            engineer.TakeVacation(8, DateTime.Now.AddMonths(1));
+        }
     }
 }
