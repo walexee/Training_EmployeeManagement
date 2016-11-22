@@ -14,10 +14,12 @@ namespace EmployeeManagement.Core.Models
 
         public string Lastname { get; set; }
 
-        public string JobTitle { get; set; }
+        public JobTitle JobTitle { get; set; }
 
         public int SkillLevel { get; set; }
 
         public double Salary { get; set; }
+
+        public Gender Gender { get; set; }
     }
 }

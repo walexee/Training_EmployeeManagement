@@ -8,9 +8,20 @@ namespace EmployeeManagement.Core.Models
 {
     public abstract class Employee
     {
-        private string _jobTitle;
+        private readonly int _vacationHoursPerMonth;
 
-        public abstract int VacationHoursPerMonth { get; protected set; }
+        public Employee(int vacationHoursPerMonth)
+        {
+            _vacationHoursPerMonth = vacationHoursPerMonth;
+        }
+
+        public int VacationHoursPerMonth
+        {
+            get
+            {
+                return _vacationHoursPerMonth;
+            }
+        }
 
         public string Firstname { get; set; }
 
@@ -18,21 +29,13 @@ namespace EmployeeManagement.Core.Models
 
         public string Lastname { get; set; }
 
-        public string JobTitle
-        {
-            get
-            {
-                return _jobTitle;
-            }
-            set
-            {
-                _jobTitle = value;
-            }
-        }
+        public virtual JobTitle JobTitle { get; set; }
 
         public int SkillLevel { get; set; }
 
         public double Salary { get; set; }
+
+        public Gender Gender { get; set; }
 
         public void TakeVacation(int hours)
         {

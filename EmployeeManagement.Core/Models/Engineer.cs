@@ -1,18 +1,32 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EmployeeManagement.Core.Models
 {
     public class Engineer : Employee
     {
-        public override int VacationHoursPerMonth { get; protected set; }
-
         public Engineer()
+            : base(10)
         {
-            VacationHoursPerMonth = 10;
+        }
+
+        public override JobTitle JobTitle
+        {
+            get
+            {
+                return base.JobTitle;
+            }
+
+            set
+            {
+                var jobTitleCode = (int)value;
+                var minJobCodeRange = 4000; //TODO: move into config
+                var maxJobCodeRange = 5000; //TODO: move into config
+
+                if (jobTitleCode < minJobCodeRange || jobTitleCode >= maxJobCodeRange)
+                    throw new InvalidOperationException("Invalid Job title");
+
+                base.JobTitle = value;
+            }
         }
     }
 }

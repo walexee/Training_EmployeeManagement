@@ -3,6 +3,7 @@ using EmployeeManagement.Core.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using static EmployeeManagement.Core.Models.JobTitle;
 
 namespace EmployeeManagement.Core.Services
 {
@@ -36,15 +37,15 @@ namespace EmployeeManagement.Core.Services
 
             switch(employeeEntity.JobTitle)
             {
-                case "Software Developer":
-                case "Programmer I":
-                case "Programmer II":
+                case SoftwareDeveloper:
+                case ProgrammerI:
+                case ProgrammerII:
                     employee = new Engineer();
                     break;
 
-                case "Jr. CPA":
-                case "Sr. CPA":
-                case "Tax Accountant":
+                case JuniorCpa:
+                case SeniorCpa:
+                case TaxAccountant:
                     employee = new Accountant();
                     break;
 
@@ -58,6 +59,7 @@ namespace EmployeeManagement.Core.Services
             employee.JobTitle = employeeEntity.JobTitle;
             employee.Salary = employeeEntity.Salary;
             employee.SkillLevel = employeeEntity.SkillLevel;
+            employee.Gender = employeeEntity.Gender;
 
             return employee;
         }

@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using EmployeeManagement.Core.Models;
 using Newtonsoft.Json;
+using static Newtonsoft.Json.JsonConvert;
 using System.IO;
 using System.Configuration;
 using System.Threading;
@@ -17,6 +16,12 @@ namespace EmployeeManagement.Core.Repositories
         private List<EmployeeEntity> _employees;
         private static ReaderWriterLockSlim _readerWriterLock = new ReaderWriterLockSlim();
 
+        /// <summary>
+        /// Gets the list of all the employees 
+        /// </summary>
+        /// <returns>
+        /// List of employees
+        /// </returns>
         public List<EmployeeEntity> GetAllEmployees()
         {
             if (_employees != null)
@@ -35,10 +40,8 @@ namespace EmployeeManagement.Core.Repositories
                 _readerWriterLock.ExitReadLock();
             }
 
-            _employees = JsonConvert.DeserializeObject<List<EmployeeEntity>>(employeesJson);
-
-            if (_employees == null)
-                _employees = new List<EmployeeEntity>();
+            _employees = DeserializeObject<List<EmployeeEntity>>(employeesJson) 
+                            ?? new List<EmployeeEntity>();
 
             return _employees;
         }
@@ -73,6 +76,7 @@ namespace EmployeeManagement.Core.Repositories
             employee.JobTitle = employeeEntity.JobTitle;
             employee.Salary = employeeEntity.Salary;
             employee.SkillLevel = employeeEntity.SkillLevel;
+            employee.Gender = employeeEntity.Gender;
 
             PersistEmployees();
         }
@@ -80,7 +84,7 @@ namespace EmployeeManagement.Core.Repositories
         private void PersistEmployees()
         {
             List<EmployeeEntity> employees = GetAllEmployees();
-            var employeesJson = JsonConvert.SerializeObject(employees, Formatting.Indented);
+            var employeesJson = SerializeObject(employees, Formatting.Indented);
 
             _readerWriterLock.EnterWriteLock();
 

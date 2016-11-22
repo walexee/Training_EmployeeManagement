@@ -50,6 +50,8 @@
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\EmployeeEntity.cs" />
     <Compile Include="Models\Engineer.cs" />
+    <Compile Include="Models\Gender.cs" />
+    <Compile Include="Models\JobTitle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\FileSystemEmployeeRepository.cs" />
     <Compile Include="Services\EmployeeService.cs" />

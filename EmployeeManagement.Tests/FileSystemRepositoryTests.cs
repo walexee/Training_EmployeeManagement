@@ -1,5 +1,6 @@
 ﻿using EmployeeManagement.Core.Models;
 using EmployeeManagement.Core.Repositories;
+using EmployeeManagement.Tests.Helpers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 using System;
@@ -20,11 +21,7 @@ namespace EmployeeManagement.Tests
         [TestInitialize]
         public void InitTest()
         {
-            var employees = new List<EmployeeEntity>
-            {
-                new EmployeeEntity { Id = 1, Firstname = "James", Lastname = "Don", JobTitle = "Programmer I", Salary = 50000, SkillLevel = 2 },
-                new EmployeeEntity { Id = 2, Firstname = "Lola", Lastname = "Igwe", JobTitle = "Tax Accountant", Salary = 52000, SkillLevel = 4 }
-            };
+            var employees = Data.Employees;
 
             File.WriteAllText(_filepath, JsonConvert.SerializeObject(employees, Formatting.Indented));
         }
@@ -49,14 +46,16 @@ namespace EmployeeManagement.Tests
             var repo = new FileSystemEmployeeRepository();
             var employee = new EmployeeEntity();
 
-            employee.Id = 78;
             employee.Firstname = "Ngozi";
             employee.Lastname = "Adekola";
             employee.Salary = 100000;
             employee.SkillLevel = 5;
-            employee.JobTitle = "Software Developer";
+            employee.JobTitle = JobTitle.SoftwareDeveloper;
+            employee.Gender = Gender.Female;
 
             repo.Create(employee);
+
+            Assert.AreEqual(3, employee.Id);
         }
 
         [TestMethod, TestCategory(IntegrationTest)]
