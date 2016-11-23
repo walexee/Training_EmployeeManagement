@@ -7,7 +7,7 @@ using static EmployeeManagement.Core.Models.JobTitle;
 
 namespace EmployeeManagement.Core.Services
 {
-    public class EmployeeService
+    public class EmployeeService : IEmployeeService
     {
         private readonly IEmployeeRepository _employeeRepository;
 

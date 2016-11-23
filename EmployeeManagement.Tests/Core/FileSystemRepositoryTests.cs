@@ -21,7 +21,7 @@ namespace EmployeeManagement.Tests
         [TestInitialize]
         public void InitTest()
         {
-            var employees = Data.Employees;
+            var employees = Data.EmployeeEntities;
 
             File.WriteAllText(_filepath, JsonConvert.SerializeObject(employees, Formatting.Indented));
         }

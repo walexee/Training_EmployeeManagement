@@ -58,6 +58,7 @@
     <Compile Include="Repositories\FileSystemEmployeeRepository.cs" />
     <Compile Include="Services\EmployeeService.cs" />
     <Compile Include="Repositories\IEmployeeRepository.cs" />
+    <Compile Include="Services\IEmployeeService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

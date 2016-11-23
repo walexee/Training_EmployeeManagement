@@ -18,7 +18,7 @@ namespace EmployeeManagement.Tests
         [TestInitialize]
         public void BeforeEach()
         {
-            var employees = Data.Employees;
+            var employees = Data.EmployeeEntities;
 
             _employeeRepoMock = new Mock<IEmployeeRepository>();
             _employeeRepoMock.Setup(x => x.GetAllEmployees()).Returns(employees);
