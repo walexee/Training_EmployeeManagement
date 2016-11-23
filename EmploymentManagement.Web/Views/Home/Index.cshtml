@@ -1,6 +1,10 @@
-﻿@using EmployeeManagement.Core.Models
+﻿@section scripts{
+    @Scripts.Render("~/bundles/handlebar")
+    @Scripts.Render("~/bundles/app")
+    
+    <script>
+        $(app.index.init);
+    </script>
+}
 
-@model Employee
-<div>
-    @Model.Firstname @Model.Lastname
-</div>
+<div id="modal-section"></div>

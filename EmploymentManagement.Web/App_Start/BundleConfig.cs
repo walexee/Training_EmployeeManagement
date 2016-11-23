@@ -20,6 +20,14 @@ namespace EmploymentManagement.Web
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/handlebar").Include(
+                "~/Scripts/handlebars-v4.0.5.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/app").Include(
+                "~/Scripts/app/view-manager.js",
+                "~/Scripts/app/session-manager.js",
+                "~/Scripts/app/index.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
