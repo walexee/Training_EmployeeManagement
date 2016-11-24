@@ -68,6 +68,7 @@ namespace EmployeeManagement.Core.Services
             employee.Salary = employeeEntity.Salary;
             employee.SkillLevel = employeeEntity.SkillLevel;
             employee.Gender = employeeEntity.Gender;
+            //employee.TimeOffs = employeeEntity.TimeOffs.ToList();
 
             return employee;
         }
@@ -83,6 +84,7 @@ namespace EmployeeManagement.Core.Services
             employeeEntity.Salary = employee.Salary;
             employeeEntity.SkillLevel = employee.SkillLevel;
             employeeEntity.Gender = employee.Gender;
+            //employeeEntity.TimeOffs = employee.TimeOffs;
 
             return employeeEntity;
         }

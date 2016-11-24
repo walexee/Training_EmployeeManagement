@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EmployeeManagement.Core.Models
 {
     public class EmployeeEntity
     {
+        public EmployeeEntity()
+        {
+            TimeOffs = new List<TimeOff>();
+        }
+
         public string Firstname { get; set; }
 
         public Guid Id { get; set; }
@@ -21,5 +23,7 @@ namespace EmployeeManagement.Core.Models
         public decimal Salary { get; set; }
 
         public Gender Gender { get; set; }
+
+        public virtual ICollection<TimeOff> TimeOffs { get; set; }
     }
 }

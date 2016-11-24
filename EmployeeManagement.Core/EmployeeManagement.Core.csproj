@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="Data\Db\EmployeeManagementContext.cs" />
     <Compile Include="Data\Db\EmployeeRepository.cs" />
+    <Compile Include="Data\Db\Mappings\TimeOffMap.cs" />
     <Compile Include="Data\Db\Mappings\EmployeeEntityMap.cs" />
     <Compile Include="Exceptions\TimeOffException.cs" />
     <Compile Include="Models\Accountant.cs" />
