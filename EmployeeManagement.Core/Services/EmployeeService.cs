@@ -16,7 +16,7 @@ namespace EmployeeManagement.Core.Services
             _employeeRepository = employeeRepository;
         }
 
-        public Employee GetEmployee(int id)
+        public Employee GetEmployee(Guid id)
         {
             var employeeEntity = _employeeRepository.GetEmployee(id);
             var employee = ToEmployee(employeeEntity);

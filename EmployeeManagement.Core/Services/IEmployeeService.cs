@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using EmployeeManagement.Core.Models;
+using System;
 
 namespace EmployeeManagement.Core.Services
 {
     public interface IEmployeeService
     {
         List<Employee> GetAllEmployees();
-        Employee GetEmployee(int id);
+        Employee GetEmployee(Guid id);
     }
 }

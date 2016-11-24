@@ -24,6 +24,7 @@ namespace EmploymentManagement.Web
                 "~/Scripts/handlebars-v4.0.5.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/app").Include(
+                "~/Scripts/app/app-common.js",
                 "~/Scripts/app/view-manager.js",
                 "~/Scripts/app/session-manager.js",
                 "~/Scripts/app/index.js"));

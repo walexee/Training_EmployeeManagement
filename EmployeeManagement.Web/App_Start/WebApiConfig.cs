@@ -5,6 +5,8 @@ using System.Net.Http;
 using System.Web.Http;
 using Microsoft.Owin.Security.OAuth;
 using Newtonsoft.Json.Serialization;
+using System.Net.Http.Formatting;
+using Newtonsoft.Json;
 
 namespace EmploymentManagement.Web
 {
@@ -25,6 +27,16 @@ namespace EmploymentManagement.Web
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            //formatting json response
+            var serializerSettings = config.Formatters.JsonFormatter.SerializerSettings;
+
+            serializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            serializerSettings.DateTimeZoneHandling = DateTimeZoneHandling.Utc;
+            serializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+            serializerSettings.PreserveReferencesHandling = PreserveReferencesHandling.None;
+            serializerSettings.Converters.Add(
+                new Newtonsoft.Json.Converters.StringEnumConverter());
         }
     }
 }

@@ -10,20 +10,11 @@ namespace EmploymentManagement.Web.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IEmployeeService _employeeService;
-
-        public HomeController(IEmployeeService employeeService)
-        {
-            _employeeService = employeeService;
-        }
-
         public ActionResult Index()
         {
-            var employee = _employeeService.GetAllEmployees().First();
+            ViewBag.Title = "Employees Management";
 
-            ViewBag.Title = "Home Page";
-
-            return View(employee);
+            return View();
         }
     }
 }

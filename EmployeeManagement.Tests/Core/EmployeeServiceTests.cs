@@ -23,8 +23,8 @@ namespace EmployeeManagement.Tests
             _employeeRepoMock = new Mock<IEmployeeRepository>();
             _employeeRepoMock.Setup(x => x.GetAllEmployees()).Returns(employees);
             _employeeRepoMock
-                .Setup(x => x.GetEmployee(It.IsAny<int>()))
-                .Returns((int input) => {
+                .Setup(x => x.GetEmployee(It.IsAny<Guid>()))
+                .Returns((Guid input) => {
                 return employees.FirstOrDefault(y => y.Id == input);
             });
         }
@@ -41,7 +41,7 @@ namespace EmployeeManagement.Tests
         public void Should_Be_Able_To_Retrieve_An_Employee()
         {
             var employeeService = new EmployeeService(_employeeRepoMock.Object);
-            var employee = employeeService.GetEmployee(2);
+            var employee = employeeService.GetEmployee(Data.User2Id);
 
             Assert.IsNotNull(employee);
             Assert.AreEqual("Lola", employee.Firstname);

@@ -62,7 +62,7 @@ namespace EmployeeManagement.Tests
             var engineer = new Engineer();
             var date = DateTime.Now.AddMonths(1);
 
-            engineer.Id = 1;
+            engineer.Id = Guid.NewGuid();
             engineer.JobTitle = JobTitle.ProgrammerI;
             engineer.Firstname = "Taylor";
 
@@ -80,7 +80,7 @@ namespace EmployeeManagement.Tests
             var engineer = new Engineer();
             var date = DateTime.Now.AddMonths(1);
 
-            engineer.Id = 1;
+            engineer.Id = Guid.NewGuid();
             engineer.JobTitle = JobTitle.ProgrammerI;
             engineer.Firstname = "Taylor";
 

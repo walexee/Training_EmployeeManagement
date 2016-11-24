@@ -46,7 +46,7 @@ namespace EmployeeManagement.Core.Repositories
             return _employees;
         }
 
-        public EmployeeEntity GetEmployee(int id)
+        public EmployeeEntity GetEmployee(Guid id)
         {
             var employees = GetAllEmployees();
             var employee = employees.FirstOrDefault(x => x.Id == id);
@@ -58,7 +58,7 @@ namespace EmployeeManagement.Core.Repositories
         {
             var employees = GetAllEmployees();
 
-            employeeEntity.Id = employees.Max(x => x.Id) + 1;
+            employeeEntity.Id = Guid.NewGuid();
             employees.Add(employeeEntity);
             PersistEmployees();
         }

@@ -54,8 +54,6 @@ namespace EmployeeManagement.Tests
             employee.Gender = Gender.Female;
 
             repo.Create(employee);
-
-            Assert.AreEqual(3, employee.Id);
         }
 
         [TestMethod, TestCategory(IntegrationTest)]
@@ -65,8 +63,8 @@ namespace EmployeeManagement.Tests
             var employees = repo.GetAllEmployees();
 
             Assert.AreEqual(2, employees.Count);
-            Assert.AreEqual(1, employees.First().Id);
-            Assert.AreEqual(2, employees[1].Id);
+            Assert.AreEqual(Data.User1Id, employees.First().Id);
+            Assert.AreEqual(Data.User2Id, employees[1].Id);
         }
     }
 }
