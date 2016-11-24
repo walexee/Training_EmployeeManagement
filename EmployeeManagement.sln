@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeManagement.Tests", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeManagement.Web", "EmployeeManagement.Web\EmployeeManagement.Web.csproj", "{2CD8D0D4-4CDC-4280-BEF4-42EF12ABC29B}"
 EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "EmployeeManagement.Database", "EmployeeManagement.Database\EmployeeManagement.Database.sqlproj", "{AB796E12-7A66-48B6-BC8D-BE9DD17BB62F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,12 @@ Global
 		{2CD8D0D4-4CDC-4280-BEF4-42EF12ABC29B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2CD8D0D4-4CDC-4280-BEF4-42EF12ABC29B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2CD8D0D4-4CDC-4280-BEF4-42EF12ABC29B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB796E12-7A66-48B6-BC8D-BE9DD17BB62F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB796E12-7A66-48B6-BC8D-BE9DD17BB62F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB796E12-7A66-48B6-BC8D-BE9DD17BB62F}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{AB796E12-7A66-48B6-BC8D-BE9DD17BB62F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB796E12-7A66-48B6-BC8D-BE9DD17BB62F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB796E12-7A66-48B6-BC8D-BE9DD17BB62F}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
