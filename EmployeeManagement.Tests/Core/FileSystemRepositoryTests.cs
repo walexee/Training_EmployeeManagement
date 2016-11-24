@@ -1,15 +1,12 @@
 ﻿using EmployeeManagement.Core.Models;
-using EmployeeManagement.Core.Repositories;
 using EmployeeManagement.Tests.Helpers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
 using System.Linq;
-using System.Text;
 using static EmployeeManagement.Tests.Constants;
+using EmployeeManagement.Core.Data.FileSystem;
 
 namespace EmployeeManagement.Tests
 {

@@ -1,4 +1,6 @@
-using EmployeeManagement.Core.Repositories;
+using EmployeeManagement.Core.Data;
+using EmployeeManagement.Core.Data.Db;
+using EmployeeManagement.Core.Data.FileSystem;
 using EmployeeManagement.Core.Services;
 using Microsoft.Practices.Unity;
 using System.Web.Http;
@@ -13,7 +15,7 @@ namespace EmploymentManagement.Web
 			var container = new UnityContainer();
             
             container.RegisterType<IEmployeeService, EmployeeService>();
-            container.RegisterType<IEmployeeRepository, FileSystemEmployeeRepository>();
+            container.RegisterType<IEmployeeRepository, EmployeeRepository>(new InjectionConstructor());
             
             GlobalConfiguration.Configuration.DependencyResolver = new UnityDependencyResolver(container);
         }

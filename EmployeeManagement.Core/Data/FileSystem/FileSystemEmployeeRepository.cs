@@ -8,7 +8,7 @@ using System.IO;
 using System.Configuration;
 using System.Threading;
 
-namespace EmployeeManagement.Core.Repositories
+namespace EmployeeManagement.Core.Data.FileSystem
 {
     public class FileSystemEmployeeRepository : IEmployeeRepository
     {

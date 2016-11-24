@@ -1,5 +1,5 @@
 ﻿using EmployeeManagement.Core.Models;
-using EmployeeManagement.Core.Repositories;
+using EmployeeManagement.Core.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,6 +29,14 @@ namespace EmployeeManagement.Core.Services
             var employeeEntities = _employeeRepository.GetAllEmployees();
 
             return employeeEntities.Select(x => ToEmployee(x)).ToList();
+        }
+
+        public void TakeTimeOff(TimeOff timeOff)
+        {
+            var employee = GetEmployee(timeOff.EmployeeId);
+
+            employee.TakeVacation(timeOff.HoursTaken, timeOff.Date);
+            _employeeRepository.Update(ToEmployeeEntity(employee));
         }
 
         private Employee ToEmployee(EmployeeEntity employeeEntity)
@@ -62,6 +70,21 @@ namespace EmployeeManagement.Core.Services
             employee.Gender = employeeEntity.Gender;
 
             return employee;
+        }
+
+        private EmployeeEntity ToEmployeeEntity(Employee employee)
+        {
+            var employeeEntity = new EmployeeEntity();
+
+            employeeEntity.Id = employee.Id;
+            employeeEntity.Firstname = employee.Firstname;
+            employeeEntity.Lastname = employee.Lastname;
+            employeeEntity.JobTitle = employee.JobTitle;
+            employeeEntity.Salary = employee.Salary;
+            employeeEntity.SkillLevel = employee.SkillLevel;
+            employeeEntity.Gender = employee.Gender;
+
+            return employeeEntity;
         }
     }
 }

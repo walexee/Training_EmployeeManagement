@@ -14,6 +14,8 @@ namespace EmployeeManagement.Core.Models
             HoursTaken = hoursTaken;
         }
 
+        public int Id { get; set; }
+        public Guid EmployeeId { get; set; }
         public DateTime Date
         {
             get

@@ -18,7 +18,7 @@ namespace EmployeeManagement.Core.Models
 
         public int SkillLevel { get; set; }
 
-        public double Salary { get; set; }
+        public decimal Salary { get; set; }
 
         public Gender Gender { get; set; }
     }

@@ -266,6 +266,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
+    <Compile Include="Controllers\TimeOffController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -344,6 +345,7 @@
     <Content Include="Templates\employee.html" />
     <Content Include="Templates\register.html" />
     <Content Include="Templates\login.html" />
+    <Content Include="Templates\timeoff-request.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

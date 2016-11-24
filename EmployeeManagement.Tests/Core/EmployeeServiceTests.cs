@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using EmployeeManagement.Core.Services;
-using EmployeeManagement.Core.Repositories;
+using EmployeeManagement.Core.Data;
 using Moq;
 using EmployeeManagement.Core.Models;
 using System.Collections.Generic;

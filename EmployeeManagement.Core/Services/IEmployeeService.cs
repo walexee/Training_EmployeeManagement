@@ -8,5 +8,6 @@ namespace EmployeeManagement.Core.Services
     {
         List<Employee> GetAllEmployees();
         Employee GetEmployee(Guid id);
+        void TakeTimeOff(TimeOff timeOff);
     }
 }

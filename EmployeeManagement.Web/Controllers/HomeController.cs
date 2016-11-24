@@ -1,4 +1,4 @@
-﻿using EmployeeManagement.Core.Repositories;
+﻿using EmployeeManagement.Core.Data;
 using EmployeeManagement.Core.Services;
 using System;
 using System.Collections.Generic;
