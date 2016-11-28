@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[TimeOffs]
 (
-	[Id] INT NOT NULL PRIMARY KEY, 
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
 	[EmployeeId] UNIQUEIDENTIFIER NOT NULL, 
     [Date] DATE NOT NULL, 
     [HoursTaken] INT NOT NULL , 

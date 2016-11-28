@@ -17,6 +17,10 @@ namespace EmployeeManagement.Core.Data.Db.Mappings
 
             Property(x => x.Gender).HasColumnName("GenderId");
             Property(x => x.JobTitle).HasColumnName("JobTitleId");
+
+            this.HasMany(x => x.TimeOffs)
+                .WithRequired()
+                .HasForeignKey(x => x.EmployeeId);
         }
     }
 }

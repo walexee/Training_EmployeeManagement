@@ -23,10 +23,13 @@ app.sessionManager = app.sessionManager || {};
         return sessionStorage.getItem('userid');
     };
 
-    sessionManager.login = function (loginInfo) {
+    sessionManager.login = function (username, password) {
         var defer = jQuery.Deferred();
-
-        loginInfo.grant_type = 'password';
+        var loginInfo = {
+            username: username,
+            password: password,
+            grant_type: 'password'
+        };
 
         $.post('/token', loginInfo)
             .done(function (token) {
@@ -52,14 +55,28 @@ app.sessionManager = app.sessionManager || {};
         sessionStorage.removeItem('userid');
     };
 
-    sessionManager.register = function (data) {
-        $.post('/api/account/register', data).done(function (result) {
-            console.log(result);
-        });
+    sessionManager.register = function (registerData, employeeData) {
+        $.post('/api/account/register', registerData)
+            .done(function (result) {
+                sessionManager
+                    .login(registerData.email, registerData.password)
+                    .done(function () {
+                        employeeData.id = sessionManager.getUserId();
+
+                        createEmployee(employeeData)
+                            .done(function () {
+                                location.reload();
+                            });
+                    });
+            })
+            .fail(function (err) {
+                viewManager.showDialog('An error occurred. Please try again later', 'Server Error');
+            });
     };
 
     function showLogin() {
-        viewManager.showModal('login.html')
+        viewManager
+            .showModal('login.html')
             .done(function (d) {
                 var $modalDiv = $('#modalView');
 
@@ -71,7 +88,7 @@ app.sessionManager = app.sessionManager || {};
                 $('#login-btn').click(function () {
                     var loginInfo = common.getFormData('#login-form');
 
-                    sessionManager.login(loginInfo)
+                    sessionManager.login(loginInfo.username, loginInfo.password)
                     .done(function () {
                         $modalDiv.modal('hide');
                         document.location.reload();
@@ -89,11 +106,16 @@ app.sessionManager = app.sessionManager || {};
                 $modalDiv.modal('show');
 
                 $modalDiv.find('#register-btn').click(function () {
-                    var data = common.getFormData('#register-form');
+                    var registerData = common.getFormData('#register-data');
+                    var employeeData = common.getFormData('#employee-data');
 
-                    sessionManager.register(data);
+                    sessionManager.register(registerData, employeeData);
                 });
             });
+    }
+
+    function createEmployee(data) {
+        return $.post('/api/employee', data);
     }
 
     function ajaxBeforeSend(e, data) {

@@ -31,6 +31,16 @@ namespace EmployeeManagement.Core.Services
             return employeeEntities.Select(x => ToEmployee(x)).ToList();
         }
 
+        public void Save(EmployeeEntity employee)
+        {
+            var dbEmployee = _employeeRepository.GetEmployee(employee.Id);
+
+            if(dbEmployee == null)
+                _employeeRepository.Create(employee);
+            else
+                _employeeRepository.Update(employee);
+        }
+
         public void TakeTimeOff(TimeOff timeOff)
         {
             var employee = GetEmployee(timeOff.EmployeeId);
@@ -84,7 +94,7 @@ namespace EmployeeManagement.Core.Services
             employeeEntity.Salary = employee.Salary;
             employeeEntity.SkillLevel = employee.SkillLevel;
             employeeEntity.Gender = employee.Gender;
-            //employeeEntity.TimeOffs = employee.TimeOffs;
+            employeeEntity.TimeOffs = employee.TimeOffs;
 
             return employeeEntity;
         }

@@ -18,20 +18,24 @@ app.index = app.index || {};
         viewManager
             .showModal('timeoff-request.html')
             .done(function ($modal) {
-                $modal.find('button#btn-cancel').click(function () {
-                    $modal.$modal('hide');
+                $modal.find('button#cancel-btn').click(function () {
+                    $modal.modal('hide');
                 });
 
-                $modal.find('button#btn-ok').click(function () {
+                $modal.find('button#request-time-off-btn').click(function () {
                     var data = common.getFormData('#time-off-form');
 
                     data.employeeId = sessionManager.getUserId();
 
-                    $.post('/api/timeOff', data).done(function () {
-                        console.log('Request time off done!');
-                    });
+                    $.post('/api/timeOff', data)
+                        .done(function () {
+                            viewManager.showDialog('Request time off done!', 'Time Off Added');
+                        })
+                        .fail(function () {
+                            viewManager.showDialog('Request time off failed!', 'Error');
+                        });
 
-                    $modal.$modal('hide');
+                    $modal.modal('hide');
                 });
             });
     }

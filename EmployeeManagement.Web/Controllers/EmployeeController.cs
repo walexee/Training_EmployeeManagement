@@ -29,9 +29,9 @@ namespace EmploymentManagement.Web.Controllers
             return _employeeService.GetEmployee(id);
         }
 
-        public void Post([FromBody]EmployeeEntity data)
+        public void Post([FromBody]EmployeeEntity employee)
         {
-            
+            _employeeService.Save(employee);
         }
 
         public void Put(Guid id, [FromBody]EmployeeEntity value)

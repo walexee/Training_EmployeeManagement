@@ -44,10 +44,30 @@ namespace EmployeeManagement.Core.Data.Db
 
         public void Update(EmployeeEntity employeeEntity)
         {
-            if(!_context.Employees.Local.Contains(employeeEntity))
+            var dbEntity = GetEmployee(employeeEntity.Id);
+
+            dbEntity.Firstname = employeeEntity.Firstname;
+            dbEntity.Lastname = employeeEntity.Lastname;
+            dbEntity.JobTitle = employeeEntity.JobTitle;
+            dbEntity.Gender = employeeEntity.Gender;
+            dbEntity.Salary = employeeEntity.Salary;
+            dbEntity.SkillLevel = employeeEntity.SkillLevel;
+
+            foreach(var timeoff in employeeEntity.TimeOffs)
             {
-                _context.Employees.Attach(employeeEntity);
-                _context.Entry(employeeEntity).State = EntityState.Modified;
+                if(timeoff.Id == 0)
+                {
+                    dbEntity.TimeOffs.Add(timeoff);
+                    continue;
+                }
+
+                var dbTimeoff = dbEntity.TimeOffs.FirstOrDefault(x => x.Id == timeoff.Id);
+
+                if(dbTimeoff != null)
+                {
+                    dbTimeoff.HoursTaken = timeoff.HoursTaken;
+                    dbTimeoff.Date = timeoff.Date;
+                }
             }
 
             _context.SaveChanges();

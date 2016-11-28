@@ -21,11 +21,11 @@ namespace EmploymentManagement.Web.Controllers
         // GET: api/TimeOff
         public IEnumerable<TimeOff> Get()
         {
-            throw new NotImplementedException();
+            return _employeeService.GetAllEmployees().SelectMany(x => x.TimeOffs);
         }
 
         // GET: api/TimeOff/5
-        public string Get(int id)
+        public TimeOff Get(int id)
         {
             throw new NotImplementedException();
         }
@@ -42,6 +42,7 @@ namespace EmploymentManagement.Web.Controllers
         // PUT: api/TimeOff/5
         public void Put(int id, [FromBody]string value)
         {
+            throw new NotImplementedException();
         }
     }
 }
