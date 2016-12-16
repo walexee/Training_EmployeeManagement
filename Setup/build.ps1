@@ -4,12 +4,12 @@
 Remove-Module [p]sake
 
 # find psake's path
-$psakeModule = (Get-ChildItem ("..\packages\psake.4.6.0\tools\psake.psm1")).FullName | Sort-Object $_ | select -Last 1
+$psakeModule = (Get-ChildItem ("$PWD\..\packages\psake*\tools\psake.psm1")).FullName | Sort-Object $_ | select -Last 1
 
 Import-Module $psakeModule
 
 Invoke-psake -buildFile .\default.ps1 -taskList Test `
-	-framework "4.6.1" `
+	-framework 4.6.1 `
 	-properties @{ 
 		"buildConfiguration" = "Release" 
 		"buildPlatform" = "Any CPU"} `
