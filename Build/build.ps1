@@ -9,5 +9,13 @@ $psakeModule = (Get-ChildItem ("..\packages\psake.4.6.0\tools\psake.psm1")).Full
 Import-Module $psakeModule
 
 Invoke-psake -buildFile .\default.ps1 -taskList Test `
-	-properties @{ "cleanMessage"="Cleaning just completed!"} `
+	-framework "4.6.1" `
+	-properties @{ 
+		"buildConfiguration" = "Release" 
+		"buildPlatform" = "Any CPU"} `
 	-parameters @{ "solutionFile" = "..\EmployeeManagement.sln"}
+
+Write-Host "Build exit code:" $LASTEXITCODE
+
+# Propagating the exit code so that builds actually fail when there is a problem
+exit $LASTEXITCODE
