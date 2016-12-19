@@ -11,6 +11,8 @@ Import-Module $psakeModule
 Invoke-psake -buildFile .\Setup\default.ps1 -taskList Test `
 	-framework 4.6.1 `
 	-properties @{ 
+		"buildServer" = "jenkins"
+		"testCategory" = "UnitTest"
 		"buildConfiguration" = "Release" 
 		"buildPlatform" = "Any CPU"} `
 	-parameters @{ "solutionFile" = "..\EmployeeManagement.sln"}

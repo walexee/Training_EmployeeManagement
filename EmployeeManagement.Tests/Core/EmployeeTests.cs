@@ -56,7 +56,7 @@ namespace EmployeeManagement.Tests
             engineer.JobTitle = JobTitle.SeniorCpa;
         }
 
-        [TestMethod, TestCategory(UnitTest)]
+        [Ignore, TestMethod, TestCategory(UnitTest)]
         public void Should_Allow_Vacation_When_Available()
         {
             var engineer = new Engineer();
