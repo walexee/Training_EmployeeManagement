@@ -40,11 +40,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="helpers.ps1" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="default.ps1" />
     <None Include="..\build.ps1" />
+    <None Include="MSBuild\MSTestBuild.targets" />
+    <None Include="MSBuild\NUnitBuild.targets" />
+    <None Include="MSBuild\xUnitBuild.targets" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
